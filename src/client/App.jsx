@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     const getHealth = async () => {
       try {
-        const resp = await axiosClient.get('/ok')
+        const resp = await axiosClient.get('/health')
         console.log(resp.data)
       } catch (err) {
         console.log(err)

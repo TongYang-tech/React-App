@@ -4,7 +4,7 @@ import cors from 'cors'
 const app = express();
 
 app.use(express.json())
-app.get("/api/ok", (_, res) => {
+app.get("/health", (_, res) => {
   res.status(200).json({
     "data": "OK",
     "timestamp": new Date().toISOString()
