@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
+  base: '/placeholder',
   resolve: {
     extensions: ['.js', '.jsx', '.json']
   },
@@ -17,7 +18,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '^.*/api/': {
-        target: "http://localhost:8080",
+        target: "http://localhost:8080/",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
@@ -28,7 +29,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '^.*/api/': {
-        target: "http://localhost:8080",
+        target: "http://localhost:8080/",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
