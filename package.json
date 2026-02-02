@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "scripts": {
+    "setup": "npm i",
+    "clean": "rm -rf ./node_modules",
     "dev:client": "vite",
     "dev:server": "node --watch src/index.js",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",

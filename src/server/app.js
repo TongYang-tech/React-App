@@ -1,11 +1,11 @@
 import express from 'express'
 import cors from 'cors'
-import router from './route/index.js'
+import healthRouter from './route/health.js'
 
 const app = express();
 
 app.use(express.json())
-app.use(router)
+app.use('/placeholder/api/health', healthRouter)
 
 app.use(cors({
   origin: 'http://localhost:3000',

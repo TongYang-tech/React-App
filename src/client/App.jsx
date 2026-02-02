@@ -6,18 +6,19 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  useEffect(() => {
-    const getHealth = async () => {
-      try {
-        const resp = await axiosClient.get('/health')
-        console.log(resp.data)
-      } catch (err) {
-        console.log(err)
-      }
-
+  const getHealth = async () => {
+    try {
+      const resp = await axiosClient.get('/placeholder/api/health')
+      console.log(resp.data)
+    } catch (err) {
+      console.log(err)
     }
+  }
+
+  useEffect(() => {
     getHealth()
   }, [])
+
   return (
     <>
       <div>
