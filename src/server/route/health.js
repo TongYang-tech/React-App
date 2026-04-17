@@ -1,4 +1,4 @@
-import express from 'express'
+const express = require('express')
 
 const healthRouter = express.Router()
 
@@ -9,4 +9,4 @@ healthRouter.use("/", (_, res) => {
   })
 })
 
-export default healthRouter
+module.exports = healthRouter
