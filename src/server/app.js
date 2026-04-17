@@ -6,8 +6,8 @@ const path = require('path')
 const healthRouter = require('./route/health.js')
 
 const baseUrl = '/placeholder'
-const buildDir = path.join(__dirname, '../dist/client')
-const assetsDir = path.join(__dirname, '../dist/client/assets')
+const buildDir = path.join(__dirname, '../../dist/client')
+const assetsDir = path.join(__dirname, '../../dist/client/assets')
 const app = express()
 
 app.use(compression())

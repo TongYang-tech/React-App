@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: placeholder-application
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: placeholder-application
+  template:
+    metadata:
+      labels:
+        app: placeholder-application
+    spec:
+      containers:
+        - name: placeholder-application
+          image: placeholder-application:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: "/api/health"
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: "/api/health"
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+          startupProbe:
+            httpGet:
+              port: 8080
+              path: "/api/health"
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: "1"
+              memory: "500Mi"
+            requests:
+              cpu: "1"
+              memory: "500Mi"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: placeholder-application
+  namespace: default
+spec:
+  selector:
+    app: placeholder-application
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+  type: NodePort
+
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: placeholder-application
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: placeholder-application
+  minReplicas: 3
+  maxReplicas: 9
+  targetCPUUtilizationPercentage: 70

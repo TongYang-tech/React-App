@@ -23,4 +23,4 @@ RUN npm prune --production
 
 FROM prep AS prod
 COPY --chown=appuser:appgroup --from=prep /tmp/app /tmp/app
-CMD ["node", "./src/server/index.js"]
+CMD ["node", "./src/index.js"]
